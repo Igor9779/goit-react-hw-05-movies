@@ -1,9 +1,9 @@
 import axios from 'axios';
-// import noPhoto from './components/images/images.jpg';
+import noPhoto from './components/img/images.jpg';
 
 axios.defaults.baseURL = 'https://api.themoviedb.org/3';
 axios.defaults.params = {
-  api_key: 'e744dd987f832ad945563dbad49387aa',
+  api_key: '29b08a225fc4d51b574a7bff049d0144',
   include_adult: false,
 };
 
@@ -77,7 +77,7 @@ export const fetchMovieCredits = movieId => {
         id,
         name,
         character,
-        photo: photo ? IMG_URL + photo : alert('not found'),
+        photo: photo ? IMG_URL + photo : noPhoto,
       }))
     )
     .catch(error => {
