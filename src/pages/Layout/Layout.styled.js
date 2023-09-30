@@ -21,7 +21,7 @@ export const Nav = styled.nav`
   padding-top: 12px;
   padding-bottom: 12px;
   color: #fff;
-  background-color: red;
+  background-color: black;
   box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
     0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
 `;
@@ -33,7 +33,7 @@ export const SNavLink = styled(NavLink)`
   margin-right: 30px;
   text-decoration: none;
   &.active {
-    color: #000;
+    color: red;
     font-weight: 700;
     transform: scale(1.1);
   }
