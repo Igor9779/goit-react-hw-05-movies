@@ -1,58 +1,66 @@
-import { Form, useLocation, useSearchParams } from 'react-router-dom';
-
 import { useState, useEffect } from 'react';
-import { fetchByQuery } from 'api';
-import { Button, FormDiv, Img, Input, MovieItem, MovieLink, MovieList, MovieTitle } from './Movies.styled.js';
+import { useSearchParams, useLocation } from 'react-router-dom';
+import { fetchQuery } from '../../api';
+import {
+  FormDiv,
+  Form,
+  Input,
+  Button,
+  MovieList,
+  MovieItem,
+  MovieLink,
+  Img,
+  MovieTitle,
+} from './Movies.styled';
 
 const Movies = () => {
-    const [query, setQuery] = useState('');
-    const [movies, setMovies] = useState([]);
-    const [searchParams, setSearchParams] = useSearchParams('');
-    const location = useLocation();
+  const [query, setQuery] = useState('');
+  const [movies, setMovies] = useState([]);
+  const [searchParams, setSearchParams] = useSearchParams('');
+  const location = useLocation();
 
-    const searchQuery = searchParams.get(query);
+  const searchQuery = searchParams.get('query');
 
-    useEffect(() => {
-        searchQuery && fetchByQuery(searchQuery).then(setMovies);
-    }, [searchQuery]);
+  useEffect(() => {
+    searchQuery && fetchQuery(searchQuery).then(setMovies);
+  }, [searchQuery]);
 
-    const handleSubmit = async e => {
-        e.preventDefault();
+  const handleSubmit = async e => {
+    e.preventDefault();
 
-        const response = await fetchByQuery(query);
-        setMovies(response);
-        setSearchParams({ query });
-        setQuery('');
-    };
+    const response = await fetchQuery(query);
+    setMovies(response);
+    setSearchParams({ query });
+    setQuery('');
+  };
+  const onChange = e => {
+    setQuery(e.target.value);
+  };
 
-    const onChange = e => {
-        setQuery(e.target.value);
-    };
-
-    return (
-        <>
-            <FormDiv>
-                <Form onSubmit={handleSubmit}>
-                    <Input type="text" value={query} onChange={onChange} />
-                    <Button type="submit">search</Button>
-                </Form>
-            </FormDiv>
-            {movies.length > 0 && (
-                <MovieList>
-                    {movies.map(({ id, title, poster }) => (
-                        <MovieItem key={id}>
-                            <MovieLink to={`/movies/${id}`} state={{ from: location }}>
-                                <Img src={poster} alt={title} />
-                                <MovieTitle>
-                                    <h3>{title}</h3>
-                                </MovieTitle>
-                            </MovieLink>
-                        </MovieItem>
-                    ))}
-                </MovieList>
-            )}
-        </>
-    )
+  return (
+    <>
+      <FormDiv>
+        <Form onSubmit={handleSubmit}>
+          <Input type="text" value={query} onChange={onChange} />
+          <Button type="submit">search</Button>
+        </Form>
+      </FormDiv>
+      {movies.length > 0 && (
+        <MovieList>
+          {movies.map(({ id, title, poster }) => (
+            <MovieItem key={id}>
+              <MovieLink to={`/movies/${id}`} state={{ from: location }}>
+                <Img src={poster} alt={title} />
+                <MovieTitle>
+                  <h3>{title}</h3>
+                </MovieTitle>
+              </MovieLink>
+            </MovieItem>
+          ))}
+        </MovieList>
+      )}
+    </>
+  );
 };
 
 export default Movies;

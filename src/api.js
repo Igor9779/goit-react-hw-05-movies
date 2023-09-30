@@ -1,10 +1,9 @@
 import axios from 'axios';
-import noPhoto from './components/img/images.jpg';
+import noPhoto from './components/images/images.jpg';
 
 axios.defaults.baseURL = 'https://api.themoviedb.org/3';
 axios.defaults.params = {
   api_key: '29b08a225fc4d51b574a7bff049d0144',
-  include_adult: false,
 };
 
 // https://image.tmdb.org/t/p/w500/kqjL17yufvn9OVLyXYpvtyrFfak.jpg
@@ -25,7 +24,7 @@ export const fetchTrending = async () => {
     });
 };
 
-export const fetchByQuery = async query => {
+export const fetchQuery = async query => {
   return axios
     .get(`/search/movie?query=${query}`)
     .then(({ data: { results } }) =>

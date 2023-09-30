@@ -1,23 +1,23 @@
+import { Outlet } from 'react-router-dom';
 import { Suspense } from 'react';
-import { NavLink, Outlet } from 'react-router-dom';
-import { Container, Nav } from './Layout.styled.js';
-import Loader from 'components/Loader/Loader';
+import Loader from '../../components/Loader/Loader';
+import { Nav, SNavLink, Container } from './Layout.styled';
 
 const Layout = () => {
-    return (
-        <>
-            <Nav>
-                <NavLink to="/">Home</NavLink>
-                <NavLink to="/movies">Movies</NavLink>
-            </Nav>
+  return (
+    <>
+      <Nav>
+        <SNavLink to="/">Home</SNavLink>
+        <SNavLink to="/movies">Movies</SNavLink>
+      </Nav>
 
-            <Container>
-                <Suspense fallback={<Loader />}>
-            <Outlet />
-                </Suspense>
-            </Container>
-        </>
-    )
-}
+      <Container>
+        <Suspense fallback={<Loader />}>
+          <Outlet />
+        </Suspense>
+      </Container>
+    </>
+  );
+};
 
 export default Layout;

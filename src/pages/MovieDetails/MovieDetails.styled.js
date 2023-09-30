@@ -1,65 +1,65 @@
-// MovieDetails.styled.js
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
 
-export const MovieDetailsContainer = styled.div`
-  background-color: #f4f4f4;
-  padding: 20px;
+export const Btn = styled.button`
+  border: none;
+  background-color: red;
+  margin: 20px 0 0 35px;
+  padding: 10px 20px; 
+  font-weight: 700;
+  cursor: pointer;
+  color: #000; 
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #f44336; 
+  }
 `;
 
-export const MoviePoster = styled.img`
-  max-width: 100%;
-  margin-bottom: 20px;
+
+export const MovieContainer = styled.div`
+  display: flex;
+  padding: 30px;
+  background-color: red;
+  margin: 20px 30px 30px;
+  box-shadow: 0px 2px 4px -1px rgb(0 0 0 / 20%),
+    0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 1px 10px 0px rgb(0 0 0 / 12%);
 `;
 
-export const MovieTitle = styled.h2`
-  font-size: 24px;
-  color: #333;
-  margin-bottom: 10px;
+export const Img = styled.img`
+  width: 300px;
 `;
 
 export const MovieInfo = styled.div`
+  padding-left: 30px;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
+  flex-direction: column;
+  justify-content: flex-start;
 `;
 
-export const ReleaseYear = styled.span`
-  font-size: 16px;
-  color: #555;
+export const MovieTitle = styled.h2`
+  margin-left: 0;
 `;
 
-export const UserScore = styled.span`
-  font-size: 16px;
-  color: #555;
+export const AddInfo = styled.h3`
+  margin-left: 35px;
+  margin-bottom: 0;
 `;
 
-export const Overview = styled.p`
-  font-size: 18px;
-  line-height: 1.5;
-  color: #333;
-  margin-bottom: 20px;
-`;
-
-export const Genres = styled.div`
-  font-size: 16px;
-  color: #555;
-`;
-
-export const BackButton = styled.button`
-  background-color: #007bff;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-`;
-
-export const BackLink = styled(Link)`
+export const InfoList = styled.ul`
   text-decoration: none;
-  color: #007bff;
-  font-size: 16px;
+  margin-left: 0;
+  margin-top: 0;
 `;
 
+export const InfoLink = styled(NavLink)`
+  text-decoration: none;
+  color: black;
+  text-decoration: none;
+  font-weight: 600;
+  &.active {
+    color: #3f51b5;
+    font-weight: 700;
+    transform: scale(1.1);
+`;

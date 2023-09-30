@@ -10,7 +10,7 @@ import {
   CastDescr,
   CastName,
   CastChar,
-} from './Cast.styled.js';
+} from './Cast.styled';
 
 const Cast = () => {
   const { movieId } = useParams('movieId');
